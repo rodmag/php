@@ -1,0 +1,58 @@
+<html>
+<head>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+<meta http-equiv="Pragma" content="no-cache"/>
+<meta http-equiv="Expires" content="0"/>
+<!-- SANDBOX  
+<script type="text/javascript" src="https://sandbox.nps.com.ar/sdk/v1/NPS.js?rnd=567"></script>
+-->
+
+<!-- STAGING
+<script type="text/javascript" src="https://implementacion.nps.com.ar/sdk/v1/NPS.js"></script>
+ -->
+ 
+<!-- PRODUCTION  -->
+<script type="text/javascript" src="https://services2.nps.com.ar/sdk/v1/NPS.js?09213131"></script>
+
+</head>
+<body>
+Token.
+<script>
+var npsSuccessResponseHandler;
+npsSuccessResponseHandler = function(paymentMethodToken) {
+  alert("token: "+paymentMethodToken.id);
+ };
+
+var npsErrorResponseHandler;
+npsErrorResponseHandler = function(response) {
+  alert("error:"+response.message);
+alert("error:"+response.message_to_purchaser);
+  console.log(response);
+  };
+</script>
+<script>
+//var npsSuccessResponseHandler;
+//var npsErrorResponseHandler;
+//NPS.setLanguage("es_AR");
+NPS.setClientSession("TWSuBNCkx2VMldVvWlyfZS2mp2b5CzxOc6Z4R6dOKvdzWf2Tgp7EWJ7hnDI1IU67"); //reemplazar por una sesion generada por el método CreateClientSession
+//alert(NPS.getClientSession());
+NPS.setMerchantId("aeroarg_web");
+//NPS.setMerchantId("aeroarg");
+//NPS.setUseDeviceFingerprint(true);
+//NPS.getUseDeviceFingerprint();
+PaymentMethodTokenParams = {
+      card: {
+        holder_name: 'EDGARDO',
+        number: '411111111111123423411111111115657657551',
+        exp_month: '03',
+        exp_year: '2018',
+        // exp_date: '1901', // you can choose exp_date over exp_year+exp_month to send expiry date in one field only
+        security_code: '123',
+      },
+};
+
+NPS.paymentMethodToken.create(PaymentMethodTokenParams, npsSuccessResponseHandler, npsErrorResponseHandler);
+</script>
+</body>
+</html>
+

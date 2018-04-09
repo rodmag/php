@@ -1,0 +1,58 @@
+<html>
+<head>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+<meta http-equiv="Pragma" content="no-cache"/>
+<meta http-equiv="Expires" content="0"/>
+<!-- SANDBOX  
+<script type="text/javascript" src="https://sandbox.nps.com.ar/sdk/v1/NPS.js"></script>
+-->
+
+<!-- STAGING  -->
+<script type="text/javascript" src="https://implementacion.nps.com.ar/sdk/v1/NPS.js"></script>
+ 
+ 
+<!-- PRODUCTION  
+<script type="text/javascript" src="https://services2.nps.com.ar/sdk/v1/NPS.js"></script>
+-->
+</head>
+<body>
+Token.
+<script>
+var npsSuccessResponseHandler;
+npsSuccessResponseHandler = function(paymentMethodToken) {
+  alert("token: "+paymentMethodToken.id);
+ };
+
+var npsErrorResponseHandler;
+npsErrorResponseHandler = function(response) {
+  alert("error:"+response.message);
+  console.log(response);
+};
+</script>
+<script>
+
+NPS.setClientSession("F9qiVtAv2p4s9yFKjfwTGDngGjEyG7ULmw26LR6UagYpDxAf5WupQVqy6BxKfj02"); //reemplazar por una sesion generada por el método CreateClientSession
+//alert(NPS.getClientSession());
+NPS.setMerchantId("th_jetsmart");
+//NPS.setMerchantId("aeroarg");
+
+//NPS.setLanguage("es_AR");
+//NPS.setMerchantId("aeroarg");
+//NPS.setUseDeviceFingerprint(true);
+//NPS.getUseDeviceFingerprint();
+PaymentMethodTokenParams = {
+      card: {
+        holder_name: 'Edgardo Zulian',
+        number: '4507990000000010',
+        exp_month: '01',
+        exp_year: '2019', 
+        // exp_date: '1901', // you can choose exp_date over exp_year+exp_month to send expiry date in one field only
+        security_code: '123',
+      },
+};
+
+NPS.paymentMethodToken.create(PaymentMethodTokenParams, npsSuccessResponseHandler, npsErrorResponseHandler);
+</script>
+</body>
+</html>
+
