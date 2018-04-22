@@ -1,0 +1,35 @@
+SDK NODE Sub1
+
+Basico
+ - Clonar o repositorio do GIThub ou download
+ - Renomear name no arquivo package.json
+ - Rodar npm install nps_sdk
+ - Rodar exemplos
+
+Form
+ - npm install express -save
+ - npm install express-generator -save
+ - npm install ejs -save
+ - npm install body-parser -save
+
+ - copiar pastas views / routes
+ - colar nome do projeto nomedoprojeto:server no arquivo package.json
+ - Adicionar script abaixo no package.json
+ "scripts": {
+    "start": "node ./bin/www"
+  },
+ - nodemon start e acessar via localhost
+
+
+Gerando primeiro Express depois adicionando o SDK
+
+ - criar diretório
+ - npm init
+ - npm install express --save
+ - npm install express-generator -g
+ - express --view=ejs myapp
+ - npm install
+
+ - Baixar o SDK e extrair na pasta do projeto
+ - npm install nps_sdk
+ - 
